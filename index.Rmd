@@ -15,7 +15,6 @@ Column {data-width=500}
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-library(knitr)
 library(dplyr)
 ```
 ### projets suivis {.value-box}
