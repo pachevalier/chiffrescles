@@ -8,7 +8,10 @@ jobs:
       - checkout
 
       - run:
-          name: Run the file
+          name: Install packages
           command: |
-             R -q -e "install.packages(c('rmarkdown','flexdashboard'))" |  
+             R -q -e "install.packages(c('rmarkdown','flexdashboard'))" 
+      - run:
+          name: Build site
+          command: |
              R -q -e "rmarkdown::render('index.Rmd',output_file='index.html')"
