@@ -9,6 +9,7 @@ jobs:
       - run:
           name: All
           command: |
+            R -e "install.packages(c('rmarkdown','flexdashboard'))" | 
             R -e "rmarkdown::render('index.Rmd',output_file='index.html')"
             
 workflows:
