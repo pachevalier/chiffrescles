@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  join-and-publish:
+    docker:
+      - image: colinfay/r-ci-tidyverse:3.6.0
+      
+    steps:
+      - checkout
+      - run:
+          name: All
+          command: |
+            R -e "rmarkdown::render('index.Rmd',output_file='index.html')"
+            
+workflows:
+    version: 2
+    weekly:
+        jobs:
+            - join-and-publish
+        triggers:
+            - schedule:
+                cron: 0 3 * * *
+                filters:
+                    branches:
+                        only:
+                            - master
