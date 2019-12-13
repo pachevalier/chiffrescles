@@ -1,0 +1,28 @@
+--
+title: "Chiffres clés"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: scroll
+---
+
+Chiffres clés {data-icon="fa-tachometer" data-orientation="columns"}
+=====================================
+
+Column {data-width=500}
+-------------------------------------
+
+### Présentation
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(knitr)
+library(dplyr)
+```
+### projets suivis {.value-box}
+
+```{r projects}
+valueBox(
+  3, 
+  icon = "fa-briefcase"
+  )
+```
