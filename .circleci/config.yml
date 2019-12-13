@@ -15,3 +15,7 @@ jobs:
           name: Build site
           command: |
              R -q -e "rmarkdown::render('index.Rmd',output_file='index.html')"
+ gh-pages/deploy:
+  build-dir: build
+  requires:
+    - build
