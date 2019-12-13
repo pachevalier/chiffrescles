@@ -1,26 +1,14 @@
 version: 2
 jobs:
-  join-and-publish:
+  build:
     docker:
-      - image: colinfay/r-ci-tidyverse:3.6.0
-      
+      - image: rocker/tidyverse
+
     steps:
       - checkout
+
       - run:
-          name: All
+          name: Run the file
           command: |
-            R -e "install.packages(c('rmarkdown','flexdashboard'))" | 
-            R -e "rmarkdown::render('index.Rmd',output_file='index.html')"
-            
-workflows:
-    version: 2
-    weekly:
-        jobs:
-            - join-and-publish
-        triggers:
-            - schedule:
-                cron: 0 3 * * *
-                filters:
-                    branches:
-                        only:
-                            - master
+             R -q -e "install.packages(c('rmarkdown','flexdashboard'))" |  
+             R -q -e "rmarkdown::render('index.Rmd',output_file='index.html')"
